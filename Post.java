@@ -61,4 +61,6 @@ public class Post {
     public void setUpdate(String update) {
         this.update = update;
     }
+
+
 }

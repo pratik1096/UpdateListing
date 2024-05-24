@@ -1,4 +1,4 @@
-package com.pratik.UpdateListing;
+package com.pratik.UpdateListing.Repo;
 
 import com.pratik.UpdateListing.Model.Post;
 import org.springframework.data.mongodb.repository.MongoRepository;

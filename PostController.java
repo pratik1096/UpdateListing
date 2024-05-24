@@ -1,8 +1,10 @@
 package com.pratik.UpdateListing.Controller;
 
 import com.pratik.UpdateListing.Model.Post;
-import com.pratik.UpdateListing.Repository;
+import com.pratik.UpdateListing.Repo.PeopleRepository;
+import com.pratik.UpdateListing.Repo.Repository;
 import com.pratik.UpdateListing.GetUpdate;
+import com.pratik.UpdateListing.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
@@ -23,6 +25,9 @@ public class PostController {
     @Autowired
     GetUpdate getUpdate;
 
+    @Autowired
+    PeopleRepository peopleRepo;
+
     @ApiIgnore
     @RequestMapping(value = "/")
     public void redirect(HttpServletResponse res) throws IOException {
@@ -37,6 +42,11 @@ public class PostController {
     @PostMapping(value = "getUpdate")
     public List<Post> getItems(String string1, String string2, String string3, String string4) {
         return getUpdate.findByFourStrings(string1, string2, string3, string4);
+    }
+
+    @PostMapping(value = "createUser")
+    public User addUser(@RequestBody User user){
+        return peopleRepo.save(user);
     }
 
 }
